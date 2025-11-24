@@ -30,27 +30,20 @@ function ListaProdutos() {
 
   // --- NOVA FUNÇÃO: GERAR CSV ---
   const exportarCSV = () => {
-    // 1. Cabeçalho do arquivo (As colunas)
     const cabecalho = "ID,Nome,Preco,Quantidade\n";
 
-    // 2. Transforma cada produto em uma linha de texto
     const linhas = produtos.map(p => {
-      // Usamos aspas no nome para evitar erros se tiver vírgula no nome do produto
       return `${p.id},"${p.nome}",${p.preco},${p.quantidade}`;
-    }).join("\n"); // Junta tudo com quebra de linha
+    }).join("\n");
 
-    // 3. Junta cabeçalho + linhas
     const conteudoCSV = cabecalho + linhas;
 
-    // 4. Cria o arquivo na memória do navegador
-    // O "\uFEFF" é um truque para o Excel reconhecer os acentos (BOM)
     const blob = new Blob(["\uFEFF" + conteudoCSV], { type: 'text/csv;charset=utf-8;' });
     
-    // 5. Cria um link falso e clica nele para baixar
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'estoque_produtos.csv'); // Nome do arquivo
+    link.setAttribute('download', 'estoque_produtos.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -98,11 +91,35 @@ function ListaProdutos() {
                   <td style={{ ...styles.td, color: p.quantidade < 5 ? '#e74c3c' : '#000', fontWeight: 'bold' }}>
                     {p.quantidade} {p.quantidade < 5 && '(Baixo!)'}
                   </td>
+
+                  {/* 🔥 COLUNA AÇÕES — ATUALIZADA */}
                   <td style={styles.td}>
-                    <button onClick={() => excluirProduto(p.id)} style={styles.btnExcluir}>
-                      🗑 Excluir
-                    </button>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+
+                      {/* ✏️ Botão Editar */}
+                      <a
+                        href={`/editar/${p.id}`}
+                        style={{
+                          backgroundColor: '#2980b9',
+                          color: 'white',
+                          padding: '8px 12px',
+                          borderRadius: '4px',
+                          textDecoration: 'none',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        ✏️ Editar
+                      </a>
+
+                      {/* 🗑 Botão Excluir */}
+                      <button onClick={() => excluirProduto(p.id)} style={styles.btnExcluir}>
+                        🗑 Excluir
+                      </button>
+
+                    </div>
                   </td>
+
                 </tr>
               ))
             )}
@@ -154,9 +171,8 @@ const styles = {
     cursor: 'pointer',
     fontWeight: 'bold'
   },
-  // Estilo do novo botão CSV
   btnCSV: {
-    backgroundColor: '#27ae60', // Verde Excel
+    backgroundColor: '#27ae60',
     color: 'white',
     border: 'none',
     padding: '10px 20px',

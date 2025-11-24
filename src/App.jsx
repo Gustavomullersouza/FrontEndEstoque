@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import ListaProdutos from './pages/ListaProdutos';
 import CadastroProduto from './pages/CadastroProduto';
 import EntradaEstoque from './pages/EntradaEstoque';
+import EditarProduto from './pages/EditarProduto';
+
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/listar" element={<ListaProdutos />} />
           <Route path="/cadastro" element={<CadastroProduto />} />
           <Route path="/entrada" element={<EntradaEstoque />} />
+          <Route path="/editar/:id" element={<EditarProduto />} />
+
         </Routes>
       </div>
     </BrowserRouter>
