@@ -1,69 +1,113 @@
+/* 
+  Variáveis e estilos globais aplicados ao elemento raiz.
+  Aqui definimos tipografia, cores e otimizações gerais.
+*/
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; /* Família de fontes padrão */
+  line-height: 1.5;      /* Altura da linha padrão */
+  font-weight: 400;       /* Peso do texto */
 
+  /* Suporte automático para modo claro/escuro */
   color-scheme: light dark;
+
+  /* Cor principal do texto (padrão branco com transparência) */
   color: rgba(255, 255, 255, 0.87);
+
+  /* Fundo padrão escuro */
   background-color: #242424;
 
+  /* Otimizações de renderização de fontes */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;    /* Suaviza fonte no Chrome/Safari */
+  -moz-osx-font-smoothing: grayscale;     /* Suaviza fonte no macOS */
 }
 
+/* 
+  Estilo global para todos os links <a>.
+  Remove sublinhado e define cor padrão.
+*/
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #646cff;           /* Cor azul violeta padrão */
+  text-decoration: inherit; /* Mantém herança do elemento pai */
 }
+
+/* 
+  Cor muda ao passar o mouse nos links
+*/
 a:hover {
   color: #535bf2;
 }
 
+/* 
+  Estilização global do body.
+  Remove margens, define fundo escuro e texto branco.
+*/
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Garante cálculo correto de largura/altura */
   font-family: sans-serif;
-  background-color: #1a1a1a; /* Garante que o fundo seja cinza escuro */
-  color: white; /* Garante texto branco por padrão */
+  background-color: #1a1a1a; /* Fundo escuro */
+  color: white;              /* Texto branco por padrão */
 }
 
-
+/* 
+  Estilo para títulos <h1>
+*/
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2em; /* Tamanho grande */
+  line-height: 1.1; /* Menor espaçamento vertical */
 }
 
+/* 
+  Estilização padrão dos botões da aplicação.
+*/
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid transparent; /* Sem borda visível */
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: inherit;     /* Herda fonte global */
+  background-color: #1a1a1a; /* Fundo escuro */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s; /* Anima cor da borda */
 }
+
+/* 
+  Borda azul quando o usuário passa o mouse no botão
+*/
 button:hover {
   border-color: #646cff;
 }
+
+/* 
+  Foco acessível para teclados e leitores de tela
+*/
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* 
+  MODO CLARO → Aplicado automaticamente quando o navegador preferir "light"
+*/
 @media (prefers-color-scheme: light) {
+
+  /* Ajusta o modo claro */
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547;         /* Texto escuro */
+    background-color: #ffffff; /* Fundo branco */
   }
+
+  /* Cor diferente para hover em modo claro */
   a:hover {
     color: #747bff;
   }
+
+  /* Botão mais claro */
   button {
     background-color: #f9f9f9;
   }

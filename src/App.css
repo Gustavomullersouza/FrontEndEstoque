@@ -1,42 +1,80 @@
+/* 
+  Estilização global do elemento raiz da aplicação React.
+  Centraliza o conteúdo, define margens e espaçamentos internos.
+*/
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 1280px;  /* Largura máxima do container */
+  margin: 0 auto;     /* Centraliza horizontalmente */
+  padding: 2rem;      /* Espaçamento interno */
+  text-align: center; /* Centraliza textos */
 }
 
+/* 
+  Classe padrão usada para estilizar logos (imagens).
+  Define tamanho, espaçamento e suaviza transições de efeitos.
+*/
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  will-change: filter;       /* Otimiza performance ao animar filtros */
+  transition: filter 300ms;  /* Suaviza alterações no filtro */
 }
+
+/* 
+  Efeito aplicado quando o mouse passa sobre qualquer logo.
+  Cria uma sombra brilhante roxa ao redor.
+*/
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
+/* 
+  Efeito especial para logos com classe .react:
+  Cria uma sombra azul característica do React.
+*/
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* 
+  Animação simples que gira o elemento de 0° a 360°.
+  Usada no logo do React quando o usuário não reduz animações.
+*/
 @keyframes logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg);   /* Início da rotação */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* Fim da rotação */
   }
 }
 
+/* 
+  Regra que apenas aplica animação se o usuário permitir movimento.
+  Alguns usuários configuram o sistema para DESABILITAR animações.
+*/
 @media (prefers-reduced-motion: no-preference) {
+
+  /* 
+    Aplica a animação de rotação no segundo link (<a>) que contiver um .logo.
+    Gira o logo infinitamente em 20 segundos.
+  */
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* 
+  Classe utilizada para caixas de conteúdo (cards).
+  Apenas adiciona espaçamento interno.
+*/
 .card {
   padding: 2em;
 }
 
+/* 
+  Texto estilizado para instruções ou mensagens informativas.
+*/
 .read-the-docs {
-  color: #888;
+  color: #888; /* Cinza neutro */
 }
